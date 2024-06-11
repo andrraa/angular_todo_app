@@ -1,0 +1,33 @@
+<div class="flex items-center container min-h-screen bg-todo-background">
+  <div class="w-4/12 bg-white rounded-xl mx-auto p-8 border shadow-lg">
+    <h1 class="font-bold text-2xl">Register Account</h1>
+    <form>
+      <div class="flex flex-col mt-4">
+        <label for="namaLengkap" class="font-semibold text-md">Nama Lengkap</label>
+        <input type="text" class="p-3 rounded-lg border mt-2 focus:outline-todo-primary"
+               placeholder="Masukkan Nama Lengkap" id="namaLengkap" autofocus>
+      </div>
+      <div class="flex flex-col mt-4">
+        <label for="email" class="font-semibold text-md">Email</label>
+        <input type="email" class="p-3 rounded-lg border mt-2 focus:outline-todo-primary"
+               placeholder="Masukkan E-Mail" id="email">
+      </div>
+      <div class="flex flex-col mt-4 mb-6">
+        <label for="password" class="font-semibold text-md">Password</label>
+        <input type="password" class="p-3 rounded-lg border mt-2 focus:outline-todo-primary"
+               placeholder="Masukkan Password" id="password">
+      </div>
+      <div class="flex flex-col mt-4 mb-6">
+        <label for="passwordConfirm" class="font-semibold text-md">Password Confirm</label>
+        <input type="password" class="p-3 rounded-lg border mt-2 focus:outline-todo-primary"
+               placeholder="Masukkan Ulang Password" id="passwordConfirm">
+      </div>
+      <button class="p-3 bg-todo-primary w-full rounded-lg text-white font-semibold hover:bg-todo-secondary">
+        Register
+      </button>
+    </form>
+    <h1 class="mt-4 text-sm text-gray-500">Sudah memiliki akun?
+      <span class="font-bold text-todo-secondary hover:cursor-pointer" (click)="goToLogin()">Login</span>
+    </h1>
+  </div>
+</div>
