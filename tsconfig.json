@@ -25,7 +25,10 @@
     ],
     "baseUrl": "src",
     "paths": {
-      "@environments/*": ["environments/*"]
+      "@core/*": ["app/core/*"],
+      "@environments/*": ["environments/*"],
+      "@model/*": ["app/model/*"],
+      "@shared/*": ["app/shared/*"]
     }
   },
   "angularCompilerOptions": {

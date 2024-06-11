@@ -1,23 +1,46 @@
-<div class="flex items-center container min-h-screen bg-todo-background">
-  <div class="w-4/12 bg-white rounded-xl mx-auto p-8 border shadow-lg">
+<div class="flex items-center container min-h-screen">
+  <div class="lg:w-4/12 w-8/12 bg-white rounded-xl mx-auto p-8 border shadow-lg">
     <h1 class="font-bold text-2xl">Login Account</h1>
-    <form>
+    <form (ngSubmit)="onLogin()" [formGroup]="loginForm">
       <div class="flex flex-col mt-4">
         <label for="email" class="font-semibold text-md">Email</label>
         <input type="email" class="p-3 rounded-lg border mt-2 focus:outline-todo-primary"
-               placeholder="Masukkan E-Mail" id="email" autofocus>
+               placeholder="Masukkan E-Mail" id="email" formControlName="email">
+
+        <div *ngIf="getLoginControl('email')?.invalid && getLoginControl('email')?.touched">
+          <small *ngIf="getLoginControl('email')?.errors?.['required']"
+                 class="font-semibold text-red-500 ml-2">* Email Tidak Boleh Kosong!</small>
+          <small *ngIf="getLoginControl('email')?.errors?.['email']"
+                 class="font-semibold text-red-500 ml-2">* Email Tidak Valid!</small>
+        </div>
       </div>
-      <div class="flex flex-col mt-4 mb-6">
+      <div class="flex flex-col mt-4 mb-4">
         <label for="password" class="font-semibold text-md">Password</label>
         <input type="password" class="p-3 rounded-lg border mt-2 focus:outline-todo-primary"
-               placeholder="Masukkan Password" id="password">
+               placeholder="Masukkan Password" id="password" formControlName="password">
+
+        <div *ngIf="getLoginControl('password')?.invalid && getLoginControl('password')?.touched">
+          <small *ngIf="getLoginControl('password')?.errors?.['required']"
+                 class="font-semibold text-red-500 ml-2">* Password Tidak Boleh Kosong!</small>
+          <small *ngIf="getLoginControl('password')?.errors?.['minlength']"
+                 class="font-semibold text-red-500 ml-2">* Password Kurang Dari 8 Karakter!</small>
+        </div>
+        <div class="mt-2 flex justify-end">
+          <h1 (click)="goToForgotPassword()"
+              class="font-bold text-sm text-todo-secondary hover:cursor-pointer">Lupa Password</h1>
+        </div>
       </div>
-      <button class="p-3 bg-todo-primary w-full rounded-lg text-white font-semibold hover:bg-todo-secondary">
+      <button [disabled]="!loginForm.valid"
+              type="submit"
+              class="p-3 bg-todo-primary w-full rounded-lg text-white font-semibold hover:bg-todo-secondary">
         Login
       </button>
     </form>
     <h1 class="mt-4 text-sm text-gray-500">Belum memiliki akun?
-      <span class="font-bold text-todo-secondary hover:cursor-pointer" (click)="goToRegister()">Register</span>
+      <span (click)="goToRegister()"
+            class="font-bold text-todo-secondary hover:cursor-pointer">
+        Register
+      </span>
     </h1>
   </div>
 </div>
